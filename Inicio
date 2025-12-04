@@ -1,0 +1,438 @@
+import React, { useState } from 'react';
+import { 
+  Bot, 
+  Zap, 
+  Database, 
+  BarChart3, 
+  CheckCircle2, 
+  XCircle, 
+  ArrowRight, 
+  Menu, 
+  X, 
+  Cpu, 
+  Globe, 
+  MessageSquare, 
+  Clock,
+  ShieldCheck,
+  Play
+} from 'lucide-react';
+
+const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Datos extraídos del informe para la sección de productos
+  const products = [
+    {
+      id: 1,
+      title: "Implementación de Chatbot IA para Ventas",
+      category: "Core Offer",
+      price: "$1,500 USD",
+      description: "Convierta visitantes en leads cualificados mientras duerme. Implementación completa llave en mano en 14 días.",
+      features: [
+        "Auditoría de flujos actuales",
+        "Diseño de personalidad del Bot",
+        "Integración WhatsApp Business API",
+        "Conexión con HubSpot/Pipedrive",
+        "Soporte 30 días post-lanzamiento"
+      ],
+      icon: <Bot className="w-10 h-10 text-blue-400" />
+    },
+    {
+      id: 2,
+      title: "Setup de CRM en Piloto Automático",
+      category: "Infraestructura",
+      price: "$2,500 USD",
+      description: "Configuración de HubSpot/Salesforce, importación de datos y automatización de tareas de seguimiento.",
+      features: [
+        "Migración y limpieza de datos",
+        "Creación de Pipelines de venta",
+        "Automatización de Follow-ups",
+        "Dashboards de rendimiento",
+        "Capacitación al equipo de ventas"
+      ],
+      icon: <Database className="w-10 h-10 text-purple-400" />
+    },
+    {
+      id: 3,
+      title: "Auditoría de IA & Automatización",
+      category: "Tripwire / Entrada",
+      price: "$297 USD",
+      description: "Diagnóstico completo de su tecnología actual. Entregamos un reporte PDF y un mapa de ruta personalizado.",
+      features: [
+        "Análisis del Stack Tecnológico",
+        "Identificación de cuellos de botella",
+        "Mapa de ruta de automatización",
+        "Video explicativo (Loom) de 20 min",
+        "Descuento en implementación"
+      ],
+      icon: <Zap className="w-10 h-10 text-yellow-400" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-blue-500 selection:text-white">
+      
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <Cpu className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold tracking-tight">SocialConexion</span>
+            </div>
+            
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a href="#soluciones" className="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Soluciones</a>
+                <a href="#comparativa" className="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Por qué nosotros</a>
+                <a href="#metodologia" className="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Metodología</a>
+                <a href="#contacto" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-900/20">
+                  Agendar Auditoría
+                </a>
+              </div>
+            </div>
+
+            <div className="-mr-2 flex md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-slate-900 border-b border-slate-800">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="#soluciones" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Soluciones</a>
+              <a href="#comparativa" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Por qué nosotros</a>
+              <a href="#metodologia" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Metodología</a>
+              <a href="#contacto" className="text-blue-400 hover:text-blue-300 block px-3 py-2 rounded-md text-base font-medium">Agendar Auditoría</a>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section (Section 4.1 from PDF) */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        {/* Background Gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/20 rounded-full blur-[100px]"></div>
+           <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 mb-8 animate-fade-in-up">
+            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+            <span className="text-sm text-slate-400 font-medium">Aceptando nuevos proyectos de automatización</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+            Marketing en <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Piloto Automático</span>
+          </h1>
+          
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10 leading-relaxed">
+            Fusionamos Inteligencia Artificial y Estrategia Humana para Escalar su Negocio. 
+            Deje de micro-gestionar sus leads. Implementamos ecosistemas de Chatbots, CRM y Automatización que trabajan 24/7.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#soluciones" className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-all shadow-lg shadow-blue-900/30 hover:scale-105">
+              Ver Soluciones
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+            <a href="#demo" className="inline-flex items-center justify-center px-8 py-4 border border-slate-700 text-base font-medium rounded-lg text-slate-300 bg-slate-900/50 hover:bg-slate-800 md:text-lg transition-all backdrop-blur-sm">
+              <Play className="mr-2 w-5 h-5" />
+              Ver Demo de 2 Min
+            </a>
+          </div>
+
+          {/* Tech Stack (Section 4.1 "Prueba Social Inmediata") */}
+          <div className="mt-20 pt-10 border-t border-slate-800/50">
+            <p className="text-sm text-slate-500 uppercase tracking-widest mb-6 font-semibold">Tecnologías que dominamos</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              {/* Simple Text Placeholders for Logos described in PDF */}
+              <span className="text-xl font-bold text-slate-300 flex items-center gap-2"><Globe className="w-5 h-5"/>OpenAI</span>
+              <span className="text-xl font-bold text-slate-300 flex items-center gap-2"><Database className="w-5 h-5"/>HubSpot</span>
+              <span className="text-xl font-bold text-slate-300 flex items-center gap-2"><Zap className="w-5 h-5"/>Zapier</span>
+              <span className="text-xl font-bold text-slate-300 flex items-center gap-2"><Bot className="w-5 h-5"/>ManyChat</span>
+              <span className="text-xl font-bold text-slate-300 flex items-center gap-2"><BarChart3 className="w-5 h-5"/>Shopify</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem/Solution Gap (Section 4.1) */}
+      <section className="py-20 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                ¿Su equipo de ventas pierde el 40% de su tiempo ingresando datos?
+              </h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <XCircle className="w-6 h-6 text-red-500" />
+                  </div>
+                  <p className="text-slate-400 text-lg">
+                    La ineficiencia operativa es el asesino silencioso del crecimiento. Sus leads se enfrían esperando una respuesta manual.
+                  </p>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <XCircle className="w-6 h-6 text-red-500" />
+                  </div>
+                  <p className="text-slate-400 text-lg">
+                    El tiempo de respuesta promedio es de 42 horas. El lead moderno espera respuesta en 5 minutos.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 relative">
+              <div className="absolute -top-4 -right-4 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                La Solución
+              </div>
+              <h3 className="text-2xl font-bold text-blue-400 mb-4">La Diferencia SocialConexion</h3>
+              <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                <strong className="text-white">No vendemos horas. Vendemos sistemas.</strong> Diseñamos flujos de trabajo inteligentes que capturan, nutren y convierten clientes automáticamente, liberando a su equipo para cerrar tratos de alto valor.
+              </p>
+              <div className="flex items-center gap-4 text-green-400">
+                <CheckCircle2 className="w-5 h-5" />
+                <span className="font-medium">Resultados predecibles</span>
+              </div>
+              <div className="flex items-center gap-4 text-green-400 mt-2">
+                <CheckCircle2 className="w-5 h-5" />
+                <span className="font-medium">Tecnología de vanguardia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparative Section (Section 2.1 & 4.1) */}
+      <section id="comparativa" className="py-24 bg-slate-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Por qué elegir SocialConexion</h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              La mayoría de agencias se centran en métricas de vanidad. Nosotros construimos activos que quedan en su propiedad.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-xl border border-slate-800 shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {/* Headers */}
+              <div className="hidden md:block bg-slate-900 p-6 border-b border-r border-slate-800"></div>
+              <div className="bg-slate-900 p-6 border-b border-r border-slate-800 text-center">
+                <h3 className="text-xl font-bold text-slate-400">Agencias Tradicionales</h3>
+              </div>
+              <div className="bg-blue-900/20 p-6 border-b border-slate-800 text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-blue-600 text-xs font-bold px-2 py-1 text-white">RECOMENDADO</div>
+                <h3 className="text-xl font-bold text-blue-400">SocialConexion</h3>
+              </div>
+
+              {/* Row 1 */}
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 font-medium text-slate-300 flex items-center justify-center md:justify-start">
+                Entregables
+              </div>
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 text-center text-slate-500">
+                Reportes PDF mensuales, Intangibles
+              </div>
+              <div className="p-6 bg-blue-900/10 border-b border-slate-800 text-center font-bold text-white">
+                Sistemas propios, Dashboards en tiempo real
+              </div>
+
+              {/* Row 2 */}
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 font-medium text-slate-300 flex items-center justify-center md:justify-start">
+                Modelo de Cobro
+              </div>
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 text-center text-slate-500">
+                Horas hombre, facturación opaca
+              </div>
+              <div className="p-6 bg-blue-900/10 border-b border-slate-800 text-center font-bold text-white">
+                Precio fijo por Proyecto (Productized)
+              </div>
+
+              {/* Row 3 */}
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 font-medium text-slate-300 flex items-center justify-center md:justify-start">
+                Enfoque
+              </div>
+              <div className="p-6 bg-slate-900 border-b border-r border-slate-800 text-center text-slate-500">
+                "Likes", Tráfico y Clics
+              </div>
+              <div className="p-6 bg-blue-900/10 border-b border-slate-800 text-center font-bold text-white">
+                Ventas, ROI y Ahorro de Tiempo
+              </div>
+
+              {/* Row 4 */}
+              <div className="p-6 bg-slate-900 border-r border-slate-800 font-medium text-slate-300 flex items-center justify-center md:justify-start">
+                Velocidad
+              </div>
+              <div className="p-6 bg-slate-900 border-r border-slate-800 text-center text-slate-500">
+                Procesos manuales lentos
+              </div>
+              <div className="p-6 bg-blue-900/10 border-slate-800 text-center font-bold text-white">
+                Ejecución inmediata con IA
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services / Productized Catalog (Section 3.1 & 5) */}
+      <section id="soluciones" className="py-24 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-blue-500 font-semibold tracking-wider uppercase text-sm">Nuestros Productos</span>
+            <h2 className="text-3xl md:text-5xl font-bold mt-2 text-white">Soluciones Llave en Mano</h2>
+            <p className="text-slate-400 mt-4 max-w-2xl mx-auto">
+              Sin sorpresas ni costos ocultos. Seleccione el sistema de automatización que su empresa necesita hoy.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <div key={product.id} className="bg-slate-950 border border-slate-800 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-900/20 group flex flex-col">
+                <div className="mb-6 p-4 bg-slate-900 rounded-xl w-fit group-hover:scale-110 transition-transform duration-300 border border-slate-800">
+                  {product.icon}
+                </div>
+                
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-xs font-bold text-blue-400 uppercase tracking-widest border border-blue-900/50 bg-blue-900/20 px-3 py-1 rounded-full">
+                    {product.category}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-2">{product.title}</h3>
+                <p className="text-slate-400 text-sm mb-6 flex-grow">{product.description}</p>
+                
+                <div className="mb-6 space-y-3">
+                  {product.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-300 text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-6 border-t border-slate-800 mt-auto">
+                  <div className="flex items-end justify-between mb-4">
+                    <span className="text-slate-500 text-sm">Inversión única</span>
+                    <span className="text-2xl font-bold text-white">{product.price}</span>
+                  </div>
+                  <button className="w-full py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 group-hover:bg-blue-600 group-hover:text-white">
+                    Ver Detalles
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA / Contact Section */}
+      <section id="contacto" className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-50"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            ¿Listo para automatizar su crecimiento?
+          </h2>
+          <p className="text-xl text-slate-300 mb-10">
+            No deje que la competencia le gane por velocidad. Implemente su primer sistema de IA en menos de 30 días.
+          </p>
+          
+          <div className="bg-slate-950/80 backdrop-blur-md p-8 rounded-2xl border border-slate-800 max-w-lg mx-auto shadow-2xl">
+            <div className="flex items-center justify-center mb-6">
+              <ShieldCheck className="w-12 h-12 text-blue-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">Garantía de Resultado</h3>
+            <p className="text-slate-400 mb-8">
+              "Si no logramos automatizar el proceso acordado en 30 días, le devolvemos su inversión."
+            </p>
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg shadow-blue-900/50">
+              Reservar Auditoría Estratégica
+            </button>
+            <p className="mt-4 text-xs text-slate-500">
+              *Espacios limitados cada mes para garantizar calidad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer (Section 8.2) */}
+      <footer className="bg-slate-950 border-t border-slate-900 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div className="col-span-1 md:col-span-1">
+              <div className="flex items-center gap-2 mb-4">
+                 <div className="w-8 h-8 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <Cpu className="w-5 h-5 text-white" />
+                  </div>
+                <span className="text-xl font-bold text-white">SocialConexion</span>
+              </div>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Transformando empresas tradicionales en máquinas de venta automatizadas mediante IA y CRM.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-bold mb-4">Servicios</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Chatbots IA</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Automatización CRM</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Auditoría de Procesos</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Content Factory</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">Recursos</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Calculadora ROI</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Blog de Automatización</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Casos de Éxito</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Webinars</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Política de Privacidad</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Términos del Servicio</a></li>
+                <li><a href="#" className="hover:text-blue-400 transition-colors">Uso de Datos & IA</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-600 text-sm">
+              © 2025 SocialConexion. Todos los derechos reservados.
+            </p>
+            <div className="flex gap-4">
+              {/* Social Icons Placeholder */}
+              <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer">
+                <MessageSquare className="w-4 h-4" />
+              </div>
+              <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer">
+                <Globe className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+
+
+export default App;
